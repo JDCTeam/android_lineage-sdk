@@ -26,8 +26,7 @@ public final class PowerMenuUtils {
     public static boolean isAdvancedRestartPossible(final Context context) {
         KeyguardManager km = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         boolean keyguardLocked = km.inKeyguardRestrictedInputMode() && km.isKeyguardSecure();
-        boolean advancedRestartEnabled = LineageSettings.Secure.getInt(context.getContentResolver(),
-                LineageSettings.Secure.ADVANCED_REBOOT, 0) == 1;
+        boolean advancedRestartEnabled = true;
         boolean isPrimaryUser = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
 
         return advancedRestartEnabled && !keyguardLocked && isPrimaryUser;
