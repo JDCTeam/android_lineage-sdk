@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2014-2015 The CyanogenMod Project
+     Copyright (C) 2017-2020 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,6 +14,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <string name="app_name">Ustawienia Pamięci Lineage</string>
-</resources>
+<permissions>
+    <!-- Compatibility for upgrades from old package name -->
+    <privapp-permissions package="org.cyanogenmod.cmsettings">
+        <permission name="android.permission.MANAGE_USERS"/>
+    </privapp-permissions>
+    <privapp-permissions package="org.lineageos.lineagesettings">
+        <permission name="android.permission.MANAGE_USERS"/>
+    </privapp-permissions>
+</permissions>
