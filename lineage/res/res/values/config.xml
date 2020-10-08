@@ -23,6 +23,7 @@
     <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
 
     <!-- Default values for LiveDisplay -->
+    <bool name="config_enableLiveDisplay">true</bool>
     <integer name="config_dayColorTemperature">6500</integer>
     <integer name="config_nightColorTemperature">4800</integer>
     <integer name="config_outdoorAmbientLux">12000</integer>
@@ -50,7 +51,7 @@
     <string-array name="config_displayModeMappings" translatable="false">
     </string-array>
 
-    <!-- Should we filter any display modes which are unampped? -->
+    <!-- Should we filter any display modes which are unmapped? -->
     <bool name="config_filterDisplayModes">false</bool>
 
     <!-- All the capabilities of the LEDs on this device, stored as a bit field.
