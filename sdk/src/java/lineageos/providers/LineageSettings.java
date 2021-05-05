@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2015-2016 The CyanogenMod Project
- *               2017-2020 The LineageOS Project
+ *               2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1058,14 +1058,13 @@ public final class LineageSettings {
          * 7 - Action Sleep
          * 8 - Last app
          * 9 - Toggle split screen
-         * 10 - Single hand (left)
-         * 11 - Single hand (right)
+         * 10 - Kill foreground app
          */
         public static final String KEY_HOME_LONG_PRESS_ACTION = "key_home_long_press_action";
 
         /** @hide */
         public static final Validator KEY_HOME_LONG_PRESS_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the home key is double-tapped.
@@ -1076,7 +1075,18 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_HOME_DOUBLE_TAP_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
+
+        /**
+         * Action to perform when the back key is long-pressed.
+         * (Default can be configured via config_longPressOnBackBehavior)
+         * (See KEY_HOME_LONG_PRESS_ACTION for valid values)
+         */
+        public static final String KEY_BACK_LONG_PRESS_ACTION = "key_back_long_press_action";
+
+        /** @hide */
+        public static final Validator KEY_BACK_LONG_PRESS_ACTION_VALIDATOR =
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Whether to wake the screen with the back key, the value is boolean.
@@ -1125,7 +1135,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_MENU_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the menu key is long-pressed.
@@ -1136,7 +1146,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_MENU_LONG_PRESS_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the assistant (search) key is pressed. (Default is 3)
@@ -1146,7 +1156,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_ASSIST_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the assistant (search) key is long-pressed. (Default is 4)
@@ -1156,7 +1166,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_ASSIST_LONG_PRESS_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the app switch key is pressed. (Default is 2)
@@ -1166,7 +1176,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_APP_SWITCH_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the app switch key is long-pressed. (Default is 0)
@@ -1176,7 +1186,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_APP_SWITCH_LONG_PRESS_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Action to perform when the screen edge is long-swiped. (Default is 0)
@@ -1186,7 +1196,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_EDGE_LONG_SWIPE_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 9);
+                new InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Whether to wake the screen with the home key, the value is boolean.
@@ -1313,6 +1323,17 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator BATTERY_LIGHT_ENABLED_VALIDATOR =
+                sBooleanValidator;
+
+        /**
+         * Whether the battery LED should be disabled when the battery is fully charged.
+         * The value is boolean (1 or 0).
+         */
+        public static final String BATTERY_LIGHT_FULL_CHARGE_DISABLED =
+                "battery_light_full_charge_disabled";
+
+        /** @hide */
+        public static final Validator BATTERY_LIGHT_FULL_CHARGE_DISABLED_VALIDATOR =
                 sBooleanValidator;
 
         /**
@@ -2140,6 +2161,7 @@ public final class LineageSettings {
          */
         public static final String[] LEGACY_SYSTEM_SETTINGS = new String[]{
                 LineageSettings.System.NAV_BUTTONS,
+                LineageSettings.System.KEY_BACK_LONG_PRESS_ACTION,
                 LineageSettings.System.KEY_HOME_LONG_PRESS_ACTION,
                 LineageSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
                 LineageSettings.System.BACK_WAKE_SCREEN,
@@ -2160,6 +2182,7 @@ public final class LineageSettings {
                 LineageSettings.System.STYLUS_ICON_ENABLED,
                 LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
                 LineageSettings.System.BATTERY_LIGHT_ENABLED,
+                LineageSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED,
                 LineageSettings.System.BATTERY_LIGHT_PULSE,
                 LineageSettings.System.BATTERY_LIGHT_LOW_COLOR,
                 LineageSettings.System.BATTERY_LIGHT_MEDIUM_COLOR,
@@ -2267,6 +2290,7 @@ public final class LineageSettings {
             VALIDATORS.put(NAVIGATION_BAR_MENU_ARROW_KEYS,
                     NAVIGATION_BAR_MENU_ARROW_KEYS_VALIDATOR);
             VALIDATORS.put(NAVIGATION_BAR_HINT, NAVIGATION_BAR_HINT_VALIDATOR);
+            VALIDATORS.put(KEY_BACK_LONG_PRESS_ACTION, KEY_BACK_LONG_PRESS_ACTION_VALIDATOR);
             VALIDATORS.put(KEY_HOME_LONG_PRESS_ACTION, KEY_HOME_LONG_PRESS_ACTION_VALIDATOR);
             VALIDATORS.put(KEY_HOME_DOUBLE_TAP_ACTION, KEY_HOME_DOUBLE_TAP_ACTION_VALIDATOR);
             VALIDATORS.put(BACK_WAKE_SCREEN, BACK_WAKE_SCREEN_VALIDATOR);
@@ -2298,6 +2322,8 @@ public final class LineageSettings {
             VALIDATORS.put(BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED,
                     BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_ENABLED, BATTERY_LIGHT_ENABLED_VALIDATOR);
+            VALIDATORS.put(BATTERY_LIGHT_FULL_CHARGE_DISABLED,
+                    BATTERY_LIGHT_FULL_CHARGE_DISABLED_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_PULSE, BATTERY_LIGHT_PULSE_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_LOW_COLOR, BATTERY_LIGHT_LOW_COLOR_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_MEDIUM_COLOR, BATTERY_LIGHT_MEDIUM_COLOR_VALIDATOR);
