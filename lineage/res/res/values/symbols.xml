@@ -109,6 +109,8 @@
     <java-symbol type="integer" name="config_doubleTapOnHomeBehavior" />
     <java-symbol type="integer" name="config_longPressOnMenuBehavior" />
     <java-symbol type="integer" name="config_longPressOnAppSwitchBehavior" />
+    <java-symbol type="array" name="keyhandler_keycodes" />
+    <java-symbol type="array" name="keyhandler_packages" />
 
     <!-- Camera key type -->
     <java-symbol type="bool" name="config_singleStageCameraKey" />
@@ -178,6 +180,9 @@
     <java-symbol type="integer" name="config_deviceSupportsKeyboardBrightnessControl" />
     <java-symbol type="dimen" name="config_buttonBrightnessSettingDefaultFloat" />
     <java-symbol type="dimen" name="config_keyboardBrightnessSettingDefaultFloat" />
+
+    <!-- Whether the device supports wireless charging or not -->
+    <java-symbol type="bool" name="config_deviceSupportsWirelessCharging" />
 
     <!-- Whether to cleanup fingerprints upon connection to the daemon and when
          user switches -->
