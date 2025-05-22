@@ -83,5 +83,7 @@
     <string name="trust_notification_title_onboarding">Mengetahui Trust</string>
     <string name="trust_notification_content_onboarding">Kenali cara memastikan perangkat Anda aman</string>
     <string name="trust_notification_action_manage">Kelola lansiran</string>
+    <string name="charging_control_notification_channel">Kontrol pengisian daya</string>
+    <string name="charging_control_notification_title">Kontrol pengisian daya</string>
     <string name="charging_control_notification_cancel_once">Batal</string>
 </resources>
